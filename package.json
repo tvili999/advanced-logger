@@ -1,0 +1,8 @@
+{
+  "name": "advanced-logger",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:tvili999/advanced-logger.git",
+  "author": "Takács Vili <tvili999@gmail.com>",
+  "license": "MIT"
+}
