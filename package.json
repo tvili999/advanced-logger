@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "git@github.com:tvili999/advanced-logger.git",
   "author": "Takács Vili <tvili999@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "uuid": "^8.3.2"
+  }
 }

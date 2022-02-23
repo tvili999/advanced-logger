@@ -1,8 +1,5 @@
-export const globalErrorLogger = () => {
-    if(!window.__ADVANCED_LOGGER__)
-        return;
-
+export const globalErrorLogger = (logger) => {
     window.onerror = (...args) => {
-        window.__ADVANCED_LOGGER__.log("global", ...args)
+        logger.log("global", ...args)
     }
 }
