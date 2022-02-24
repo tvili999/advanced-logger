@@ -24,11 +24,18 @@ export const requestLogger = (logger) => {
         const id = nextId++;
         logger.log("xhr", id, "request", ...args)
         this.addEventListener('load', function() {
+            let response = this.response;
+            try {
+                response = JSON.parse(response)
+            }
+            catch{}
+
             logger.log("xhr", id, "load", {
                 readyState: this.readyState,
+                headers: this.getAllResponseHeaders().split("\r\n"),
                 status: this.status,
                 statusText: this.statusText,
-                response: this.response,
+                response,
                 responseText: this.responseText,
                 responseType: this.responseType,
                 responseURL: this.responseURL,

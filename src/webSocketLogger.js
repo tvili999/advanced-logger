@@ -1,6 +1,6 @@
 import { logger } from "./logger";
 
-export const webSocketLogger = (url) => {
+export const webSocketLogger = (url, session) => {
     let queue = [];
 
     let logFn = null;
@@ -24,19 +24,19 @@ export const webSocketLogger = (url) => {
         }
 
         try {
-            ws = new WebSocket(url);
+            ws = new WebSocket(url + (session ? "/" + session : ""));
             ws.onclose = retry;
             ws.onerror = retry;
 
             ws.onopen = () => {
-                logFn = (...item) => send(JSON.stringify([...item]));
+                logFn = (...item) => send([...item]);
 
                 if(queue.length > 0) {
                     let _queue = queue;
                     queue = [];
 
                     for(const item of _queue)
-                        send(JSON.stringify(item));
+                        send(item);
                 }
             }
         }
